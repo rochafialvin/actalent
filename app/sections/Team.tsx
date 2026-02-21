@@ -88,23 +88,6 @@ export default function Team({ language }: TeamProps) {
     }),
   };
 
-  // Frame draw animation
-  const frameVariants = {
-    hidden: { 
-      pathLength: 0,
-      opacity: 0,
-    },
-    visible: (i: number) => ({
-      pathLength: 1,
-      opacity: 1,
-      transition: {
-        delay: 0.3 + i * 0.1,
-        duration: 0.8,
-        ease: "easeInOut",
-      },
-    }),
-  };
-
   // Info slide up from bottom
   const infoVariants = {
     hidden: { 
@@ -168,29 +151,6 @@ export default function Team({ language }: TeamProps) {
               className="group text-center"
             >
               <div className="relative mb-5 overflow-hidden rounded-2xl aspect-[3/4] bg-gray-100">
-                {/* Decorative Frame SVG */}
-                <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none z-10"
-                  viewBox="0 0 100 100"
-                  preserveAspectRatio="none"
-                >
-                  <motion.rect
-                    x="2"
-                    y="2"
-                    width="96"
-                    height="96"
-                    rx="8"
-                    fill="none"
-                    stroke="#1E88E5"
-                    strokeWidth="1"
-                    custom={index}
-                    variants={frameVariants}
-                    initial="hidden"
-                    animate={isInView ? "visible" : "hidden"}
-                    style={{ pathLength: 0 }}
-                  />
-                </svg>
-                
                 <Image
                   src={member.image}
                   alt={member.name}

@@ -167,8 +167,6 @@ export default function Industries({ language }: IndustriesProps) {
                   custom={index}
                   variants={iconVariants}
                   className="w-16 h-16 rounded-full bg-[#1E88E5]/10 group-hover:bg-white/20 flex items-center justify-center mb-4 transition-colors duration-300"
-                  whileHover={{ scale: 1.1, rotate: 360 }}
-                  transition={{ duration: 0.6 }}
                 >
                   <industry.icon className="w-8 h-8 text-[#1E88E5] group-hover:text-white transition-colors duration-300" />
                 </motion.div>
