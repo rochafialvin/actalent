@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Mail, MapPin, FileText, ExternalLink } from "lucide-react";
+import { Mail, MapPin, FileText, MessageCircle } from "lucide-react";
 import { useIsMobile, useReducedMotion } from "../lib/animations";
 
 interface ContactProps {
@@ -213,59 +213,64 @@ export default function Contact({ language }: ContactProps) {
             </div>
           </motion.div>
 
-          {/* Right Column - Tally Form */}
+          {/* Right Column - WhatsApp CTA */}
           <motion.div
             variants={formVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="bg-white rounded-3xl p-8 shadow-2xl"
+            className="bg-white/5 border border-white/10 rounded-3xl p-8"
           >
-            <div className="text-center mb-6">
+            <div className="text-center mb-8">
               <motion.h3 
                 initial={{ opacity: 0, y: 10 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4 }}
-                className="text-2xl font-bold text-[#1a3a4a] mb-2"
-              >{currentContent.cta}</motion.h3>
+                className="text-2xl font-bold text-white mb-4"
+              >
+                {language === "id" ? "Chat WhatsApp" : "WhatsApp Chat"}
+              </motion.h3>
               <motion.p 
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ delay: 0.5 }}
-                className="text-gray-600 text-sm"
+                className="text-gray-300"
               >
                 {language === "id"
-                  ? "Isi formulir di bawah ini dan tim kami akan menghubungi Anda."
-                  : "Fill out the form below and our team will contact you."}
+                  ? "Hubungi kami langsung melalui WhatsApp untuk respons cepat."
+                  : "Contact us directly via WhatsApp for a quick response."}
               </motion.p>
             </div>
 
-            {/* Tally Form Embed */}
-            <div className="relative">
-              <iframe
-                src="https://tally.so/embed/w7Y6XX?alignLeft=1&hideTitle=1&transparentBackground=1"
-                width="100%"
-                height="500"
-                frameBorder="0"
-                marginHeight={0}
-                marginWidth={0}
-                title="Contact Form"
-                className="rounded-xl"
-              >
-              </iframe>
-            </div>
+            {/* WhatsApp CTA */}
+            <motion.a
+              href={`https://wa.me/+6281234567890?text=${encodeURIComponent(
+                language === "id"
+                  ? "Halo, saya ingin membahas layanan rekrutmen untuk perusahaan saya"
+                  : "Hi, I want to discuss recruitment services for my company"
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.6 }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="block w-full bg-[#25D366] hover:bg-[#22c35e] text-white font-semibold py-4 px-8 rounded-2xl text-center transition-colors flex items-center justify-center gap-3"
+            >
+              <MessageCircle className="w-6 h-6" />
+              {language === "id" ? "Chat di WhatsApp" : "Chat on WhatsApp"}
+            </motion.a>
 
-            <p className="text-center text-xs text-gray-400 mt-4 flex items-center justify-center gap-1">
-              Powered by
-              <a
-                href="https://tally.so"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#1E88E5] hover:underline inline-flex items-center gap-1"
-              >
-                Tally
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            </p>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.7 }}
+              className="text-center text-sm text-gray-400 mt-6"
+            >
+              {language === "id"
+                ? "Respon dalam 24 jam"
+                : "Response within 24 hours"}
+            </motion.p>
           </motion.div>
         </div>
       </div>
