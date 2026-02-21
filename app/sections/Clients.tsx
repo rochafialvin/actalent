@@ -17,7 +17,6 @@ const clients = [
   { name: "KARTINIS", image: "/clients/act-client-kartinis.PNG" },
   { name: "PT VELLIA KANDI", image: "/clients/act-client-vellia.jpeg" },
   { name: "Kata Kala", image: "/clients/act-client-kata-kala.jpeg" },
-  { name: "EHI", image: "/clients/act-client-goat.jpeg" },
   { name: "PT INDOBRIZ", image: "/clients/act-client-indobriz.jpeg" },
   { name: "DHT", image: "/clients/act-client-dht.jpeg" },
   { name: "Mawfeeq", image: "/clients/act-client-mawfeeq.jpeg" },
@@ -43,7 +42,7 @@ export default function Clients({ language }: ClientsProps) {
   const [isPaused, setIsPaused] = useState(false);
   const isMobile = useIsMobile();
   const prefersReducedMotion = useReducedMotion();
-  
+
   // Triple the clients array for truly seamless loop
   // Using A-B-A pattern so the loop point is invisible
   const duplicatedClients = [...clients, ...clients, ...clients];
@@ -72,7 +71,7 @@ export default function Clients({ language }: ClientsProps) {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -80,7 +79,7 @@ export default function Clients({ language }: ClientsProps) {
           >
             {currentContent.subtitle}
           </motion.span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -88,7 +87,7 @@ export default function Clients({ language }: ClientsProps) {
           >
             {currentContent.title}
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -113,9 +112,9 @@ export default function Clients({ language }: ClientsProps) {
         <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
 
         {/* Scrolling Track */}
-        <div 
+        <div
           className="flex animate-marquee"
-          style={{ 
+          style={{
             animationPlayState: isPaused ? 'paused' : 'running',
             width: 'fit-content'
           }}
