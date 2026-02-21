@@ -34,6 +34,7 @@ const navItems = {
 export default function Navigation({ language, setLanguage }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("#home");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,10 +44,36 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: "-20% 0px -40% 0px" }
+    );
+
+    const sections = navItems[language].map((item) => {
+      const section = document.querySelector(item.href);
+      if (section) observer.observe(section);
+      return section;
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        if (section) observer.unobserve(section);
+      });
+    };
+  }, [language]);
+
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
+      setActiveSection(href);
     }
     setIsMobileMenuOpen(false);
   };
@@ -97,11 +124,21 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index }}
-                  className={`text-sm font-medium transition-colors duration-300 hover:text-[#1E88E5] ${
-                    isScrolled ? "text-[#1a3a4a]" : "text-white"
+                  className={`text-base font-medium transition-colors duration-300 relative ${
+                    activeSection === item.href
+                      ? "text-[#1E88E5]"
+                      : isScrolled
+                      ? "text-[#1a3a4a]"
+                      : "text-white"
                   }`}
                 >
                   {item.label}
+                  {/* Underline - only visible when active */}
+                  <span
+                    className={`absolute -bottom-1 left-0 w-full h-0.5 bg-[#1E88E5] origin-left transition-transform duration-300 ${
+                      activeSection === item.href ? "scale-x-100" : "scale-x-0"
+                    }`}
+                  />
                 </motion.a>
               ))}
             </nav>
@@ -156,9 +193,19 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  className="text-lg font-medium text-[#1a3a4a] hover:text-[#1E88E5] transition-colors"
+                  className={`text-lg font-medium transition-colors ${
+                    activeSection === item.href
+                      ? "text-[#1E88E5]"
+                      : "text-[#1a3a4a] hover:text-[#1E88E5]"
+                  }`}
                 >
                   {item.label}
+                  {/* Underline for mobile active state */}
+                  <span
+                    className={`block h-0.5 bg-[#1E88E5] mt-1 mx-auto transition-all duration-300 ${
+                      activeSection === item.href ? "w-full" : "w-0"
+                    }`}
+                  />
                 </a>
               ))}
             </nav>
