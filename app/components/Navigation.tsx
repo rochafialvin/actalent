@@ -74,11 +74,11 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
             >
               <a href="#home" onClick={() => scrollToSection("#home")}>
                 <Image
-                  src={isScrolled ? "/logo-light.svg" : "/logo.png"}
+                  src="/logo.png"
                   alt="ACTALENT Solutions Partners"
                   width={200}
                   height={50}
-                  className="h-12 w-auto"
+                  className="h-12 w-auto rounded-lg"
                   priority
                 />
               </a>
