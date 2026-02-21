@@ -12,6 +12,14 @@ interface TeamProps {
 
 const team = [
   {
+    name: "Audria Cahya Tari",
+    position: {
+      id: "Founder & Director",
+      en: "Founder & Director",
+    },
+    image: "/team/act-profile-audria.jpeg",
+  },
+  {
     name: "Apriliyana Nur Rafiani",
     position: {
       id: "Head of Legal",
@@ -26,14 +34,6 @@ const team = [
       en: "HR Manager",
     },
     image: "/team/act-profile-tabah.jpeg",
-  },
-  {
-    name: "Audria Cahya Tari",
-    position: {
-      id: "Founder & Director",
-      en: "Founder & Director",
-    },
-    image: "/team/act-profile-audria.jpeg",
   },
   {
     name: "Fikri Satria Nugraha",
