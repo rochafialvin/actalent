@@ -112,7 +112,7 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
             </motion.div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-2">
               {navItems[language].map((item, index) => (
                 <motion.a
                   key={item.href}
@@ -124,19 +124,19 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 * index }}
-                  className={`text-base font-medium transition-colors duration-300 relative ${
+                  className={`text-base font-medium transition-all duration-300 relative group px-3 py-2 rounded-md ${
                     activeSection === item.href
-                      ? "text-[#1E88E5]"
-                      : isScrolled
-                      ? "text-[#1a3a4a]"
-                      : "text-white"
+                      ? "bg-[#1E88E5]/10"
+                      : ""
+                  } ${
+                    isScrolled ? "text-[#1a3a4a]" : "text-white"
                   }`}
                 >
                   {item.label}
-                  {/* Underline - only visible when active */}
+                  {/* Underline - only visible on hover (not for active items) */}
                   <span
-                    className={`absolute -bottom-1 left-0 w-full h-0.5 bg-[#1E88E5] origin-left transition-transform duration-300 ${
-                      activeSection === item.href ? "scale-x-100" : "scale-x-0"
+                    className={`absolute bottom-1 left-3 right-3 h-0.5 bg-[#1E88E5] origin-left transition-transform duration-300 scale-x-0 ${
+                      activeSection === item.href ? '' : 'group-hover:scale-x-100'
                     }`}
                   />
                 </motion.a>
@@ -184,7 +184,7 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-40 bg-white pt-24 lg:hidden"
           >
-            <nav className="flex flex-col items-center space-y-6 py-8">
+            <nav className="flex flex-col items-center space-y-2 py-8">
               {navItems[language].map((item) => (
                 <a
                   key={item.href}
@@ -193,17 +193,17 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
                     e.preventDefault();
                     scrollToSection(item.href);
                   }}
-                  className={`text-lg font-medium transition-colors ${
+                  className={`text-lg font-medium transition-all duration-300 relative group px-4 py-2 rounded-md w-full text-center ${
                     activeSection === item.href
-                      ? "text-[#1E88E5]"
-                      : "text-[#1a3a4a] hover:text-[#1E88E5]"
+                      ? "bg-[#1E88E5]/10 text-[#1a3a4a]"
+                      : "text-[#1a3a4a]"
                   }`}
                 >
                   {item.label}
-                  {/* Underline for mobile active state */}
+                  {/* Underline for mobile - only on hover (not for active items) */}
                   <span
-                    className={`block h-0.5 bg-[#1E88E5] mt-1 mx-auto transition-all duration-300 ${
-                      activeSection === item.href ? "w-full" : "w-0"
+                    className={`absolute bottom-1 left-4 right-4 h-0.5 bg-[#1E88E5] transition-transform duration-300 scale-x-0 ${
+                      activeSection === item.href ? '' : 'group-hover:scale-x-100'
                     }`}
                   />
                 </a>
