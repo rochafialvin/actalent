@@ -95,7 +95,7 @@ export default function Team({ language }: TeamProps) {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group text-center"
             >
-              <div className="relative mb-5 overflow-hidden rounded-2xl aspect-square bg-gray-100">
+              <div className="relative mb-5 overflow-hidden rounded-2xl aspect-[3/4] bg-gray-100">
                 <Image
                   src={member.image}
                   alt={member.name}
