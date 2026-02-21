@@ -14,12 +14,12 @@ module.exports = {
         accent: '#E3F2FD',
       },
       animation: {
-        marquee: 'marquee 30s linear infinite',
+        marquee: 'marquee 45s linear infinite',
       },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(-33.33%)' },
         },
       },
     },

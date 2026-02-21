@@ -44,8 +44,9 @@ export default function Clients({ language }: ClientsProps) {
   const isMobile = useIsMobile();
   const prefersReducedMotion = useReducedMotion();
   
-  // Double the clients array for seamless loop
-  const duplicatedClients = [...clients, ...clients];
+  // Triple the clients array for truly seamless loop
+  // Using A-B-A pattern so the loop point is invisible
+  const duplicatedClients = [...clients, ...clients, ...clients];
 
   // Fade entrance for logos
   const logoVariants = {
@@ -113,7 +114,7 @@ export default function Clients({ language }: ClientsProps) {
 
         {/* Scrolling Track */}
         <div 
-          className={`flex ${isPaused ? '' : 'animate-marquee'}`}
+          className="flex animate-marquee"
           style={{ 
             animationPlayState: isPaused ? 'paused' : 'running',
             width: 'fit-content'
