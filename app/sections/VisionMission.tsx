@@ -59,7 +59,7 @@ export default function VisionMission({ language }: VisionMissionProps) {
     hidden: { 
       opacity: 0, 
       rotateY: isMobile || prefersReducedMotion ? 0 : 90,
-      x: isMobile || prefersReducedMotion ? (language === "id" ? -30 : 30) : 0 
+      x: isMobile || prefersReducedMotion ? (language === "id" ? -30 : 30) : 0,
     },
     visible: (custom: number) => ({
       opacity: 1,
@@ -110,7 +110,11 @@ export default function VisionMission({ language }: VisionMissionProps) {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             className="relative"
-            style={{ perspective: 1000 }}
+            style={{ 
+              perspective: 1000,
+              transformStyle: "preserve-3d",
+              backfaceVisibility: "hidden"
+            }}
           >
             <motion.div 
               className="absolute -top-4 -left-4 w-24 h-24 bg-[#1E88E5]/10 rounded-full"
@@ -121,7 +125,7 @@ export default function VisionMission({ language }: VisionMissionProps) {
               transition={{ duration: 4, repeat: Infinity }}
             />
             
-            <div className="relative bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-gray-200/50 hover:shadow-2xl transition-shadow duration-500">
+            <div className="relative bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-gray-200/50 hover:shadow-2xl transition-shadow duration-500" style={{ willChange: "transform", backfaceVisibility: "hidden" }}>
               <div className="flex items-center gap-4 mb-6">
                 <motion.div 
                   className="w-14 h-14 rounded-2xl bg-[#1E88E5] flex items-center justify-center"
@@ -153,7 +157,11 @@ export default function VisionMission({ language }: VisionMissionProps) {
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             className="relative"
-            style={{ perspective: 1000 }}
+            style={{ 
+              perspective: 1000,
+              transformStyle: "preserve-3d",
+              backfaceVisibility: "hidden"
+            }}
           >
             <motion.div 
               className="absolute -top-4 -right-4 w-24 h-24 bg-[#1a3a4a]/10 rounded-full"
@@ -164,7 +172,7 @@ export default function VisionMission({ language }: VisionMissionProps) {
               transition={{ duration: 4, repeat: Infinity, delay: 1 }}
             />
             
-            <div className="relative bg-[#1a3a4a] rounded-3xl p-8 md:p-10 shadow-xl shadow-[#1a3a4a]/20">
+            <div className="relative bg-[#1a3a4a] rounded-3xl p-8 md:p-10 shadow-xl shadow-[#1a3a4a]/20" style={{ willChange: "transform", backfaceVisibility: "hidden" }}>
               <div className="flex items-center gap-4 mb-6">
                 <motion.div 
                   className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center"
