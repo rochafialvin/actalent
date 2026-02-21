@@ -210,7 +210,7 @@ export default function Workflow({ language }: WorkflowProps) {
               {/* Content Card */}
               <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                 <motion.div 
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 ml-20 md:ml-0"
+                  className={`bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 ml-20 md:ml-0 ${index % 2 === 0 ? "md:mr-8" : "md:ml-8"}`}
                   whileHover={{ y: -5 }}
                   transition={{ duration: 0.2 }}
                 >
@@ -230,14 +230,18 @@ export default function Workflow({ language }: WorkflowProps) {
                 </motion.div>
               </div>
 
-              {/* Center Node - Elastic Pop */}
+              {/* Center Node - Elastic Pop - Positioned on opposite side from content */}
               <motion.div
                 custom={index}
                 variants={nodeVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
                 whileHover={{ scale: 1.2 }}
-                className="absolute left-8 md:left-1/2 transform -translate-x-1/2 w-16 h-16 rounded-full bg-white border-4 border-[#1E88E5] flex items-center justify-center shadow-lg z-10"
+                className={`absolute w-16 h-16 rounded-full bg-white border-4 border-[#1E88E5] flex items-center justify-center shadow-lg z-10 ${
+                  index % 2 === 0 
+                    ? "left-8 md:left-[calc(50%+2rem)]" // Even: content left, number right of line with 2rem gap
+                    : "left-8 md:left-[calc(50%-6rem)]" // Odd: content right, number left of line with 2rem gap
+                }`}
               >
                 <span className="text-[#1E88E5] font-bold text-lg">{index + 1}</span>
               </motion.div>
