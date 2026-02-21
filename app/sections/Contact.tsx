@@ -171,30 +171,26 @@ export default function Contact({ language }: ContactProps) {
               </motion.a>
 
               {/* Address - with bouncing pin */}
-              <motion.div
+              <motion.a
                 variants={itemVariants}
-                className="flex items-center gap-4 text-gray-300"
+                href="https://maps.google.com/?q=Jl+Cilenggang+II+Kec+Serpong+Kota+Tangerang+Selatan+Indonesia"
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ x: 5 }}
+                className="flex items-center gap-4 text-gray-300 hover:text-[#1E88E5] transition-colors group"
               >
                 <motion.div 
                   variants={pinVariants}
-                  className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center"
+                  className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-[#1E88E5] transition-colors"
                   whileHover={{ scale: 1.1 }}
-                  animate={isInView ? {
-                    y: [0, -5, 0],
-                  } : {}}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatDelay: 1,
-                  }}
                 >
-                  <MapPin className="w-5 h-5 text-[#1E88E5]" />
+                  <MapPin className="w-5 h-5" />
                 </motion.div>
                 <div>
                   <div className="text-sm text-gray-400">{currentContent.address}</div>
                   <div className="text-white">{contactInfo.address}</div>
                 </div>
-              </motion.div>
+              </motion.a>
 
               {/* NPWP */}
               <motion.div
