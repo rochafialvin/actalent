@@ -152,7 +152,7 @@ export default function About({ language }: AboutProps) {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <motion.span 
+          <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
@@ -160,7 +160,7 @@ export default function About({ language }: AboutProps) {
           >
             {language === "id" ? "Tentang Kami" : "About Us"}
           </motion.span>
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -168,7 +168,7 @@ export default function About({ language }: AboutProps) {
           >
             {currentContent.title}
           </motion.h2>
-          <motion.div 
+          <motion.div
             initial={{ scaleX: 0 }}
             animate={isInView ? { scaleX: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -177,10 +177,10 @@ export default function About({ language }: AboutProps) {
         </motion.div>
 
         {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Text Content - Slides from Left */}
-          <motion.div 
-            className="space-y-6"
+          <motion.div
+            className="space-y-4 lg:space-y-6 w-full"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -188,8 +188,10 @@ export default function About({ language }: AboutProps) {
             {currentContent.paragraphs.map((paragraph, index) => (
               <motion.p
                 key={index}
-                variants={isMobile || prefersReducedMotion ? paragraphVariants : leftContentVariants}
-                className="text-lg text-gray-600 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-base lg:text-lg text-gray-600 leading-relaxed"
               >
                 {paragraph}
               </motion.p>
@@ -197,8 +199,8 @@ export default function About({ language }: AboutProps) {
           </motion.div>
 
           {/* Highlights - Slides from Right with Icon Pop */}
-          <motion.div 
-            className="space-y-6"
+          <motion.div
+            className="space-y-4 lg:space-y-6"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -207,32 +209,32 @@ export default function About({ language }: AboutProps) {
               <motion.div
                 key={highlight.title}
                 variants={isMobile || prefersReducedMotion ? highlightCardVariants : rightContentVariants}
-                whileHover={{ 
-                  y: -5, 
+                whileHover={{
+                  y: -5,
                   boxShadow: "0 10px 30px rgba(30, 136, 229, 0.15)",
-                  transition: { duration: 0.2 } 
+                  transition: { duration: 0.2 }
                 }}
-                className="flex items-start gap-4 p-6 rounded-2xl bg-gray-50 hover:bg-blue-50/50 transition-colors duration-300 group"
+                className="flex items-start gap-3 lg:gap-4 p-4 lg:p-6 rounded-2xl bg-gray-50 hover:bg-blue-50/50 transition-colors duration-300 group"
               >
-                <motion.div 
+                <motion.div
                   variants={iconPopVariants}
-                  className="flex-shrink-0 w-14 h-14 rounded-xl bg-[#1E88E5]/10 flex items-center justify-center group-hover:bg-[#1E88E5] transition-colors duration-300"
+                  className="flex-shrink-0 w-12 h-12 lg:w-14 lg:h-14 rounded-xl bg-[#1E88E5]/10 flex items-center justify-center group-hover:bg-[#1E88E5] transition-colors duration-300"
                 >
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <highlight.icon className="w-7 h-7 text-[#1E88E5] group-hover:text-white transition-colors duration-300" />
+                    <highlight.icon className="w-6 h-6 lg:w-7 lg:h-7 text-[#1E88E5] group-hover:text-white transition-colors duration-300" />
                   </motion.div>
                 </motion.div>
-                <div>
-                  <motion.h3 
+                <div className="min-w-0 flex-1">
+                  <motion.h3
                     initial={{ opacity: 0 }}
                     animate={isInView ? { opacity: 1 } : {}}
                     transition={{ delay: 0.5 + index * 0.1 }}
-                    className="text-xl font-bold text-[#1a3a4a] mb-1"
+                    className="text-lg lg:text-xl font-bold text-[#1a3a4a] mb-1"
                   >{highlight.title}</motion.h3>
-                  <p className="text-gray-600">{highlight.desc}</p>
+                  <p className="text-sm lg:text-base text-gray-600">{highlight.desc}</p>
                 </div>
               </motion.div>
             ))}
