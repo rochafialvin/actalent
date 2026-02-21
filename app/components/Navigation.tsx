@@ -4,10 +4,11 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface NavigationProps {
   language: "id" | "en";
-  setLanguage: (lang: "id" | "en") => void;
 }
 
 const navItems = {
@@ -31,10 +32,15 @@ const navItems = {
   ],
 };
 
-export default function Navigation({ language, setLanguage }: NavigationProps) {
+export default function Navigation({ language }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("#home");
+  const pathname = usePathname();
+
+  // Get the opposite language URL
+  const otherLang = language === "id" ? "en" : "id";
+  const otherLangUrl = pathname.replace(`/${language}`, `/${otherLang}`);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -145,20 +151,24 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
 
             {/* Language Toggle + Mobile Menu Button */}
             <div className="flex items-center space-x-4">
-              {/* Language Toggle */}
-              <motion.button
+              {/* Language Toggle - Now uses Link for SEO */}
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                onClick={() => setLanguage(language === "id" ? "en" : "id")}
-                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${
-                  isScrolled
-                    ? "bg-[#1E88E5] text-white hover:bg-[#1565C0]"
-                    : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
-                }`}
               >
-                {language === "id" ? "EN" : "ID"}
-              </motion.button>
+                <Link
+                  href={otherLangUrl}
+                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 inline-block ${
+                    isScrolled
+                      ? "bg-[#1E88E5] text-white hover:bg-[#1565C0]"
+                      : "bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm"
+                  }`}
+                  aria-label={language === "id" ? "Switch to English" : "Ganti ke Bahasa Indonesia"}
+                >
+                  {language === "id" ? "EN" : "ID"}
+                </Link>
+              </motion.div>
 
               {/* Mobile Menu Button */}
               <button
@@ -166,6 +176,7 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
                 className={`lg:hidden p-2 rounded-lg transition-colors ${
                   isScrolled ? "text-[#1a3a4a]" : "text-white"
                 }`}
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
