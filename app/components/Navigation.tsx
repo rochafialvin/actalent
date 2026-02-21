@@ -99,13 +99,13 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
               transition={{ delay: 0.2 }}
               className="flex-shrink-0"
             >
-              <a href="#home" onClick={() => scrollToSection("#home")}>
+              <a href="#home" onClick={() => scrollToSection("#home")} className="inline-block bg-gradient-to-tr from-[#000C1A] to-[#0B1E2F] p-1 rounded-lg">
                 <Image
                   src="/logo.png"
                   alt="ACTALENT Solutions Partners"
                   width={200}
                   height={50}
-                  className="h-12 w-auto rounded-lg"
+                  className="h-12 w-auto"
                   priority
                 />
               </a>

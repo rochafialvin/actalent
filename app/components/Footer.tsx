@@ -44,13 +44,14 @@ export default function Footer({ language }: FooterProps) {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="bg-gradient-to-tr from-[#000C1A] to-[#0B1E2F] p-1 rounded-lg"
           >
             <Image
               src="/logo.png"
               alt="ACTALENT Solutions Partners"
               width={180}
               height={45}
-              className="h-10 w-auto opacity-80 hover:opacity-100 transition-opacity"
+              className="h-10 w-auto"
             />
           </motion.div>
 
