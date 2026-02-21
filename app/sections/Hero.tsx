@@ -119,7 +119,7 @@ export default function Hero({ language }: HeroProps) {
     <section
       ref={containerRef}
       id="home"
-      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-[#1a3a4a] via-[#1E3A5F] to-[#0F2744] overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center bg-[#1a3a4a] overflow-hidden"
     >
       {/* Background Pattern with Parallax */}
       {!prefersReducedMotion && !isMobile && (
@@ -282,9 +282,6 @@ export default function Hero({ language }: HeroProps) {
           </motion.div>
         </motion.div>
       )}
-
-      {/* Bottom Gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </section>
   );
 }
