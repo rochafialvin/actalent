@@ -84,7 +84,7 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-500 ${
           isScrolled
             ? "glass shadow-lg"
             : "bg-transparent"
@@ -182,7 +182,7 @@ export default function Navigation({ language, setLanguage }: NavigationProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-white pt-24 lg:hidden"
+            className="fixed inset-0 z-40 bg-white pt-24 lg:hidden w-screen h-screen overflow-hidden"
           >
             <nav className="flex flex-col items-center space-y-2 py-8">
               {navItems[language].map((item) => (
