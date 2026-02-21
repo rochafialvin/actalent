@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Globe, Database, Zap, Wallet, HeartHandshake } from "lucide-react";
-import { useIsMobile, useReducedMotion, useCounter } from "../lib/animations";
+import { useIsMobile, useReducedMotion } from "../lib/animations";
 
 interface AdvantagesProps {
   language: "id" | "en";
@@ -17,35 +17,30 @@ const advantages = {
       title: "Jaringan Nasional",
       description:
         "Didukung oleh ekosistem nasional yang terdiri dari lebih dari 100 recruiter profesional, memungkinkan proses rekrutmen yang lebih cepat, menjangkau kandidat di berbagai wilayah, dan sesuai dengan kebutuhan klien.",
-      number: 100,
     },
     {
       icon: Database,
       title: "Database Kandidat Luas",
       description:
         "Memiliki akses ke basis data kandidat yang beragam dan terus diperbarui, sehingga memudahkan pencarian talenta yang relevan sesuai kompetensi, pengalaman, dan kebutuhan bisnis.",
-      number: 1000,
     },
     {
       icon: Zap,
       title: "Proses Recruitmen Cepat dan Akurat",
       description:
         "Menggunakan kombinasi pendekatan digital dan personal untuk memastikan proses seleksi berjalan efisien tanpa mengorbankan kualitas dan ketepatan kandidat.",
-      number: 2,
     },
     {
       icon: Wallet,
       title: "Sistem Biaya Fleksible",
       description:
         "Menerapkan skema success fee dengan struktur biaya yang kompetitif dan disesuaikan dengan kebutuhan serta skala rekrutmen klien.",
-      number: 0,
     },
     {
       icon: HeartHandshake,
       title: "Pendekatan Human-Centered",
       description:
         "Menilai kandidat tidak hanya dari sisi kualifikasi teknis, tetapi juga kesesuaian karakter, budaya kerja, dan nilai dengan organisasi klien.",
-      number: 100,
     },
   ],
   en: [
@@ -54,35 +49,30 @@ const advantages = {
       title: "National Network",
       description:
         "Supported by a national ecosystem consisting of more than 100 professional recruiters, enabling faster recruitment processes, reaching candidates in various regions, and aligned with client needs.",
-      number: 100,
     },
     {
       icon: Database,
       title: "Extensive Candidate Database",
       description:
         "Has access to diverse and continuously updated candidate databases, making it easier to search for relevant talent according to competency, experience, and business needs.",
-      number: 1000,
     },
     {
       icon: Zap,
       title: "Fast and Accurate Recruitment Process",
       description:
         "Uses a combination of digital and personal approaches to ensure selection processes run efficiently without sacrificing candidate quality and accuracy.",
-      number: 2,
     },
     {
       icon: Wallet,
       title: "Flexible Cost System",
       description:
         "Implements success fee schemes with competitive cost structures tailored to client needs and recruitment scale.",
-      number: 0,
     },
     {
       icon: HeartHandshake,
       title: "Human-Centered Approach",
       description:
         "Evaluates candidates not only from technical qualifications but also character fit, work culture, and values with the client organization.",
-      number: 100,
     },
   ],
 };
@@ -97,24 +87,6 @@ const content = {
     subtitle: "Why Choose Us",
   },
 };
-
-// Counter Component for advantage numbers
-function AdvantageNumber({ value, isInView, index }: { value: number; isInView: boolean; index: number }) {
-  const isMobile = useIsMobile();
-  const { count, ref } = useCounter({ 
-    end: value, 
-    duration: 2000,
-    startOnView: true 
-  });
-  
-  if (value === 0) return <span>0</span>;
-  
-  if (isMobile || !isInView) {
-    return <span ref={ref}>{value}</span>;
-  }
-  
-  return <span ref={ref}>{count}</span>;
-}
 
 export default function Advantages({ language }: AdvantagesProps) {
   const ref = useRef(null);
@@ -226,18 +198,6 @@ export default function Advantages({ language }: AdvantagesProps) {
                 </motion.div>
                 
                 <div className="flex-1">
-                  <div className="flex items-baseline gap-2 mb-2">
-                    <span className="text-3xl font-bold text-[#1E88E5]">
-                      <AdvantageNumber 
-                        value={advantage.number} 
-                        isInView={isInView} 
-                        index={index} 
-                      />
-                    </span>
-                    <span className="text-xs text-gray-400 uppercase tracking-wider">
-                      0{index + 1}
-                    </span>
-                  </div>
                   <h3 className="text-xl font-bold text-white mb-3">{advantage.title}</h3>
                   <p className="text-gray-300 leading-relaxed text-sm">{advantage.description}</p>
                 </div>
