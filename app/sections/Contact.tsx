@@ -33,7 +33,7 @@ const content = {
 
 const contactInfo = {
   email: "actalentsolutionspartners@gmail.com",
-  address: "Jl Cilenggang II, Kec. Serpong, Kota Tangerang Selatan, Indonesia",
+  address: "Kota Jakarta, Indonesia",
   npwp: "1000 0000 0618 2783",
 };
 
@@ -173,7 +173,7 @@ export default function Contact({ language }: ContactProps) {
               {/* Address - with bouncing pin */}
               <motion.a
                 variants={itemVariants}
-                href="https://maps.google.com/?q=Jl+Cilenggang+II+Kec+Serpong+Kota+Tangerang+Selatan+Indonesia"
+                href="https://maps.google.com/?q=Jakarta+Indonesia"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ x: 5 }}
