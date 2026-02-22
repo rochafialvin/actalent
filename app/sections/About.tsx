@@ -13,6 +13,8 @@ interface AboutProps {
 const content = {
   id: {
     title: "Tentang Perusahaan",
+    subtitle: "Tentang Kami",
+    description: "Mitra terpercaya dalam menemukan talenta yang tepat untuk pertumbuhan bisnis Anda.",
     paragraphs: [
       "ACTalent Solutions Partners lahir dari sebuah visi sederhana: membantu perusahaan kecil dan menengah (UMKM) yang belum memiliki tim Human Resources (HR) internal serta memiliki keterbatasan anggaran dalam proses perekrutan. Kami hadir sebagai solusi praktis untuk menyediakan kandidat berkualitas tanpa harus menanggung biaya besar.",
       "Sebagai Penyedia layanan Recruitment solutions, ACTalent Solutions Partners beroperasi melalui jaringan nasional dengan lebih dari 100 recruiter profesional lintas industri, sehingga memungkinkan proses rekrutmen yang efisien, adaptif, dan selaras dengan kebutuhan bisnis klien.",
@@ -37,6 +39,8 @@ const content = {
   },
   en: {
     title: "About Company",
+    subtitle: "About Us",
+    description: "Your trusted partner in finding the right talent for growth.",
     paragraphs: [
       "ACTalent Solutions Partners was born from a simple vision: to help small and medium enterprises (SMEs) that don't yet have internal Human Resources (HR) teams and have budget limitations in the recruitment process. We come as a practical solution to provide quality candidates without bearing large costs.",
       "As a Recruitment solutions service provider, ACTalent Solutions Partners operates through a national network with more than 100 professional recruiters across industries, enabling efficient, adaptive recruitment processes aligned with client business needs.",
@@ -149,31 +153,26 @@ export default function About({ language }: AboutProps) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-16"
         >
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-[#1E88E5] font-semibold text-sm tracking-wider uppercase mb-4 block"
-          >
-            {language === "id" ? "Tentang Kami" : "About Us"}
-          </motion.span>
+          <div className="flex justify-center">
+            <div className="border py-1 px-4 rounded-lg">{currentContent.subtitle}</div>
+          </div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-bold text-[#1a3a4a] mb-6"
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter mt-5"
           >
             {currentContent.title}
           </motion.h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={isInView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="w-24 h-1 bg-[#1E88E5] mx-auto rounded-full origin-center"
-          />
+          <p className="text-center mt-5 opacity-75">
+            {currentContent.description}
+          </p>
         </motion.div>
 
         {/* Content Grid */}

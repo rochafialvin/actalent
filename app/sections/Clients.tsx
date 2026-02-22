@@ -67,33 +67,26 @@ export default function Clients({ language }: ClientsProps) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center"
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-12"
         >
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-[#1E88E5] font-semibold text-sm tracking-wider uppercase mb-4 block"
-          >
-            {currentContent.subtitle}
-          </motion.span>
+          <div className="flex justify-center">
+            <div className="border py-1 px-4 rounded-lg">{currentContent.subtitle}</div>
+          </div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-bold text-[#1a3a4a] mb-6"
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter mt-5"
           >
             {currentContent.title}
           </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-          >
+          <p className="text-center mt-5 opacity-75">
             {currentContent.description}
-          </motion.p>
+          </p>
         </motion.div>
       </div>
 

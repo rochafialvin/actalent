@@ -122,118 +122,114 @@ export default function Contact({ language }: ContactProps) {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#1a3a4a]" ref={ref}>
+    <section id="contact" className="py-24 bg-gray-50" ref={ref}>
       <div className="section-padding max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16">
-          {/* Left Column - Info with Stagger */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
+            className="flex flex-col items-center"
           >
-            <motion.span 
+            <motion.div
               variants={itemVariants}
-              className="text-[#1E88E5] font-semibold text-sm tracking-wider uppercase mb-4 block"
+              className="flex justify-center"
             >
-              {currentContent.subtitle}
-            </motion.span>
-            
-            <motion.h2 
+              <div className="border py-1 px-4 rounded-lg">{currentContent.subtitle}</div>
+            </motion.div>
+
+            <motion.h2
               variants={itemVariants}
-              className="text-4xl md:text-5xl font-bold text-white mb-6"
+              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter mt-5"
             >{currentContent.title}</motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               variants={itemVariants}
-              className="text-lg text-gray-300 mb-10"
+              className="text-lg text-gray-600 mb-10 mt-5 text-center"
             >{currentContent.description}</motion.p>
 
-            <div className="space-y-6">
-              {/* Email */}
+            <div className="space-y-6 w-full">
               <motion.a
                 variants={itemVariants}
                 href={`mailto:${contactInfo.email}`}
                 whileHover={{ x: 5 }}
-                className="flex items-center gap-4 text-gray-300 hover:text-[#1E88E5] transition-colors group"
+                className="flex items-center gap-4 text-gray-600 hover:text-[#1E88E5] transition-colors group"
               >
-                <motion.div 
+                <motion.div
                   variants={iconVariants}
                   custom={0}
-                  className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-[#1E88E5] transition-colors"
+                  className="w-12 h-12 rounded-xl bg-[#1E88E5]/10 flex items-center justify-center group-hover:bg-[#1E88E5] transition-colors"
                   whileHover={{ scale: 1.1, rotate: 5 }}
                 >
-                  <Mail className="w-5 h-5" />
+                  <Mail className="w-5 h-5 text-[#1E88E5] group-hover:text-white transition-colors" />
                 </motion.div>
                 <div>
-                  <div className="text-sm text-gray-400">{currentContent.email}</div>
-                  <div className="text-white">{contactInfo.email}</div>
+                  <div className="text-sm text-gray-500">{currentContent.email}</div>
+                  <div className="text-[#1a3a4a]">{contactInfo.email}</div>
                 </div>
               </motion.a>
 
-              {/* Address - with bouncing pin */}
               <motion.a
                 variants={itemVariants}
                 href="https://maps.google.com/?q=Jakarta+Indonesia"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ x: 5 }}
-                className="flex items-center gap-4 text-gray-300 hover:text-[#1E88E5] transition-colors group"
+                className="flex items-center gap-4 text-gray-600 hover:text-[#1E88E5] transition-colors group"
               >
-                <motion.div 
+                <motion.div
                   variants={pinVariants}
-                  className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-[#1E88E5] transition-colors"
+                  className="w-12 h-12 rounded-xl bg-[#1E88E5]/10 flex items-center justify-center group-hover:bg-[#1E88E5] transition-colors"
                   whileHover={{ scale: 1.1 }}
                 >
-                  <MapPin className="w-5 h-5" />
+                  <MapPin className="w-5 h-5 text-[#1E88E5] group-hover:text-white transition-colors" />
                 </motion.div>
                 <div>
-                  <div className="text-sm text-gray-400">{currentContent.address}</div>
-                  <div className="text-white">{contactInfo.address}</div>
+                  <div className="text-sm text-gray-500">{currentContent.address}</div>
+                  <div className="text-[#1a3a4a]">{contactInfo.address}</div>
                 </div>
               </motion.a>
 
-              {/* NPWP */}
               <motion.div
                 variants={itemVariants}
-                className="flex items-center gap-4 text-gray-300"
+                className="flex items-center gap-4 text-gray-600"
               >
-                <motion.div 
+                <motion.div
                   variants={iconVariants}
                   custom={2}
-                  className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center"
+                  className="w-12 h-12 rounded-xl bg-[#1E88E5]/10 flex items-center justify-center"
                   whileHover={{ scale: 1.1, rotate: -5 }}
                 >
-                  <FileText className="w-5 h-5" />
+                  <FileText className="w-5 h-5 text-[#1E88E5]" />
                 </motion.div>
                 <div>
-                  <div className="text-sm text-gray-400">{currentContent.npwp}</div>
-                  <div className="text-white">{contactInfo.npwp}</div>
+                  <div className="text-sm text-gray-500">{currentContent.npwp}</div>
+                  <div className="text-[#1a3a4a]">{contactInfo.npwp}</div>
                 </div>
               </motion.div>
             </div>
           </motion.div>
 
-          {/* Right Column - WhatsApp CTA */}
           <motion.div
             variants={formVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="bg-white/5 border border-white/10 rounded-3xl p-8"
+            className="bg-white border border-gray-200 rounded-3xl p-8 shadow-lg"
           >
             <div className="text-center mb-8">
-              <motion.h3 
+              <motion.h3
                 initial={{ opacity: 0, y: 10 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4 }}
-                className="text-2xl font-bold text-white mb-4"
+                className="text-2xl font-bold text-[#1a3a4a] mb-4"
               >
                 {language === "id" ? "Chat WhatsApp" : "WhatsApp Chat"}
               </motion.h3>
-              <motion.p 
+              <motion.p
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ delay: 0.5 }}
-                className="text-gray-300"
+                className="text-gray-600"
               >
                 {language === "id"
                   ? "Hubungi kami langsung melalui WhatsApp untuk respons cepat."
@@ -241,7 +237,6 @@ export default function Contact({ language }: ContactProps) {
               </motion.p>
             </div>
 
-            {/* WhatsApp CTA */}
             <motion.a
               href={`https://wa.me/+6283192179737?text=${encodeURIComponent(
                 language === "id"
@@ -261,11 +256,11 @@ export default function Contact({ language }: ContactProps) {
               {language === "id" ? "Chat di WhatsApp" : "Chat on WhatsApp"}
             </motion.a>
 
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.7 }}
-              className="text-center text-sm text-gray-400 mt-6"
+              className="text-center text-sm text-gray-500 mt-6"
             >
               {language === "id"
                 ? "Respon dalam 24 jam"

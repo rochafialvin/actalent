@@ -81,10 +81,12 @@ const content = {
   id: {
     title: "Keunggulan Kami",
     subtitle: "Mengapa Memilih Kami",
+    description: "Nikmati manfaat bekerja sama dengan recruiter profesional.",
   },
   en: {
     title: "Our Advantages",
     subtitle: "Why Choose Us",
+    description: "Experience the benefits of working with professional recruiters.",
   },
 };
 
@@ -134,40 +136,33 @@ export default function Advantages({ language }: AdvantagesProps) {
   };
 
   return (
-    <section id="advantages" className="py-24 bg-[#1a3a4a]" ref={ref}>
+    <section id="advantages" className="py-24 bg-gray-50" ref={ref}>
       <div className="section-padding max-w-7xl mx-auto">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-16"
         >
-          <motion.span 
-            initial={{ opacity: 0, y: 10 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-[#1E88E5] font-semibold text-sm tracking-wider uppercase mb-4 block"
-          >
-            {currentContent.subtitle}
-          </motion.span>
-          <motion.h2 
+          <div className="flex justify-center">
+            <div className="border py-1 px-4 rounded-lg">{currentContent.subtitle}</div>
+          </div>
+
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-bold text-white mb-6"
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tighter mt-5"
           >
             {currentContent.title}
           </motion.h2>
-          <motion.div 
-            initial={{ scaleX: 0 }}
-            animate={isInView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="w-24 h-1 bg-[#1E88E5] mx-auto rounded-full origin-center"
-          />
+          <p className="text-center mt-5 opacity-75">
+            {currentContent.description}
+          </p>
         </motion.div>
 
-        {/* Advantages Grid - Radial Expand */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {currentAdvantages.map((advantage, index) => (
             <motion.div
@@ -176,17 +171,17 @@ export default function Advantages({ language }: AdvantagesProps) {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
-                boxShadow: "0 20px 40px rgba(30, 136, 229, 0.2)",
-                transition: { duration: 0.2 } 
+                boxShadow: "0 20px 40px rgba(30, 136, 229, 0.15)",
+                transition: { duration: 0.2 }
               }}
-              className={`group bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300 ${
+              className={`group bg-white rounded-2xl p-6 border border-gray-100 hover:border-[#1E88E5]/30 transition-all duration-300 ${
                 index === 4 ? "md:col-span-2 lg:col-span-1" : ""
               }`}
             >
               <div className="flex items-start gap-4">
-                <motion.div 
+                <motion.div
                   custom={index}
                   variants={iconPulseVariants}
                   initial="hidden"
@@ -195,10 +190,10 @@ export default function Advantages({ language }: AdvantagesProps) {
                 >
                   <advantage.icon className="w-7 h-7 text-white" />
                 </motion.div>
-                
+
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-white mb-3">{advantage.title}</h3>
-                  <p className="text-gray-300 leading-relaxed text-sm">{advantage.description}</p>
+                  <h3 className="text-xl font-bold text-[#1a3a4a] mb-3">{advantage.title}</h3>
+                  <p className="text-gray-600 leading-relaxed text-sm">{advantage.description}</p>
                 </div>
               </div>
             </motion.div>
