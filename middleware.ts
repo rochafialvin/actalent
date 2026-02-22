@@ -45,6 +45,19 @@ export function middleware(request: NextRequest) {
   );
 
   if (pathnameHasLocale) {
+    // Update cookie if user visits a different locale path
+    const currentLocale = pathname.split('/')[1];
+    const cookieLocale = request.cookies.get("locale")?.value;
+    
+    if (currentLocale && currentLocale !== cookieLocale) {
+      const response = NextResponse.next();
+      response.cookies.set("locale", currentLocale, {
+        maxAge: 60 * 60 * 24 * 365,
+        path: "/",
+      });
+      return response;
+    }
+    
     return NextResponse.next();
   }
 
@@ -68,8 +81,8 @@ export function middleware(request: NextRequest) {
   const newUrl = new URL(request.url);
   newUrl.pathname = `/${locale}${pathname}`;
 
-  // Create response with redirect
-  const response = NextResponse.redirect(newUrl);
+  // Create response with redirect (302 for SEO language redirects)
+  const response = NextResponse.redirect(newUrl, 302);
   
   // Set locale cookie for future visits
   response.cookies.set("locale", locale, {
