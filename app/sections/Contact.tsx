@@ -243,7 +243,7 @@ export default function Contact({ language }: ContactProps) {
 
             {/* WhatsApp CTA */}
             <motion.a
-              href={`https://wa.me/+6281234567890?text=${encodeURIComponent(
+              href={`https://wa.me/+6283192179737?text=${encodeURIComponent(
                 language === "id"
                   ? "Halo, saya ingin membahas layanan rekrutmen untuk perusahaan saya"
                   : "Hi, I want to discuss recruitment services for my company"
