@@ -109,7 +109,6 @@ export default function SLA({ language }: SLAProps) {
       },
     }),
   };
-  };
 
   // Badge bounce
   const badgeVariants = {
