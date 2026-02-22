@@ -192,7 +192,6 @@ export default function Advantages({ language }: AdvantagesProps) {
                   initial="hidden"
                   animate={isInView ? "visible" : "hidden"}
                   className="flex-shrink-0 w-14 h-14 rounded-xl bg-[#1E88E5] flex items-center justify-center"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
                 >
                   <advantage.icon className="w-7 h-7 text-white" />
                 </motion.div>
