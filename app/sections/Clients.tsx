@@ -15,7 +15,6 @@ const clients = [
   { name: "Skillventory", image: "/clients/act-client-skillventory.jpeg" },
   { name: "MKIT", image: "/clients/act-client-mkit.jpeg" },
   { name: "KARTINIS", image: "/clients/act-client-kartinis.PNG" },
-  { name: "PT VELLIA KANDI", image: "/clients/act-client-vellia.jpeg" },
   { name: "Kata Kala", image: "/clients/act-client-kata-kala.jpeg" },
   { name: "PT INDOBRIZ", image: "/clients/act-client-indobriz.jpeg" },
   { name: "DHT", image: "/clients/act-client-dht.jpeg" },
