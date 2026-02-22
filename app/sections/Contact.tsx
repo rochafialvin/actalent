@@ -152,14 +152,12 @@ export default function Contact({ language }: ContactProps) {
                 whileHover={{ x: 5 }}
                 className="flex items-center gap-4 text-gray-600 hover:text-[#1E88E5] transition-colors group"
               >
-                <motion.div
-                  variants={iconVariants}
-                  custom={0}
+                <div
                   className="w-12 h-12 rounded-xl bg-[#1E88E5]/10 flex items-center justify-center group-hover:bg-[#1E88E5] transition-colors"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  
                 >
                   <Mail className="w-5 h-5 text-[#1E88E5] group-hover:text-white transition-colors" />
-                </motion.div>
+                </div>
                 <div>
                   <div className="text-sm text-gray-500">{currentContent.email}</div>
                   <div className="text-[#1a3a4a]">{contactInfo.email}</div>
