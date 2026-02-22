@@ -13,6 +13,7 @@ import Workflow from "../sections/Workflow";
 import SLA from "../sections/SLA";
 import Team from "../sections/Team";
 import Clients from "../sections/Clients";
+import Testimonials from "../sections/Testimonials";
 import Contact from "../sections/Contact";
 import { StructuredData } from "../components/StructuredData";
 
@@ -122,6 +123,7 @@ export default function HomePage({ params }: PageProps) {
         <SLA language={lang as Locale} />
         <Team language={lang as Locale} />
         <Clients language={lang as Locale} />
+        <Testimonials language={lang as Locale} />
         <Contact language={lang as Locale} />
         
         <Footer language={lang as Locale} />
