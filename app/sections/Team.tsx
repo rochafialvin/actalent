@@ -165,7 +165,7 @@ export default function Team({ language }: TeamProps) {
                 animate={isInView ? "visible" : "hidden"}
               >
                 <h3 className="text-lg font-bold text-[#1a3a4a] mb-1">{member.name}</h3>
-                <p className="text-[#1E88E5] font-medium text-sm">{member.position[language]}</p>
+                <p className="text-sm opacity-75">{member.position[language]}</p>
               </motion.div>
             </motion.div>
           ))}
