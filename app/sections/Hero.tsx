@@ -19,7 +19,6 @@ const content = {
       { icon: Clock, value: 2, prefix: "1-", label: "Minggu Shortlist", duration: 1500 },
       { icon: Shield, value: 90, prefix: "30-", label: "Hari Garansi", duration: 2000 },
     ],
-    cta: "Pelajari Lebih Lanjut",
     scrollIndicator: "Scroll ke bawah",
   },
   en: {
@@ -31,7 +30,6 @@ const content = {
       { icon: Clock, value: 2, prefix: "1-", label: "Weeks Shortlist", duration: 1500 },
       { icon: Shield, value: 90, prefix: "30-", label: "Days Guarantee", duration: 2000 },
     ],
-    cta: "Learn More",
     scrollIndicator: "Scroll down",
   },
 };
@@ -208,25 +206,6 @@ export default function Hero({ language }: HeroProps) {
           >
             {currentContent.description}
           </motion.p>
-
-          {/* CTA Button */}
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            onClick={scrollToAbout}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="group inline-flex items-center gap-2 px-8 py-4 bg-[#1E88E5] text-white font-semibold rounded-full hover:bg-[#1565C0] transition-all duration-300 hover:shadow-lg hover:shadow-[#1E88E5]/30"
-          >
-            {currentContent.cta}
-            <motion.span
-              animate={{ y: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            >
-              <ArrowDown className="w-5 h-5" />
-            </motion.span>
-          </motion.button>
         </div>
 
         {/* Stats Bar with Counter Animation */}
