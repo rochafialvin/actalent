@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Mail, MapPin, FileText, MessageCircle } from "lucide-react";
+import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { useIsMobile, useReducedMotion } from "../lib/animations";
 
 interface ContactProps {
@@ -17,16 +17,14 @@ const content = {
     description: "Siap membantu perusahaan Anda menemukan talenta terbaik. Hubungi kami untuk konsultasi gratis.",
     email: "Email",
     address: "Alamat",
-    npwp: "NPWP",
     cta: "Kirim Pesan",
   },
   en: {
     title: "Let's Work Together",
     subtitle: "Contact Us",
-    description: "Ready to help your company find the best talent. Contact us for a free consultation.",
+    description: "Ready to help your company find best talent. Contact us for a free consultation.",
     email: "Email",
     address: "Address",
-    npwp: "Tax ID",
     cta: "Send Message",
   },
 };
@@ -34,7 +32,6 @@ const content = {
 const contactInfo = {
   email: "actalentsolutionspartners@gmail.com",
   address: "Kota Jakarta, Indonesia",
-  npwp: "1000 0000 0618 2783",
 };
 
 export default function Contact({ language }: ContactProps) {
@@ -189,24 +186,6 @@ export default function Contact({ language }: ContactProps) {
                   <div className="text-[#1a3a4a]">{contactInfo.address}</div>
                 </div>
               </motion.a>
-
-              <motion.div
-                variants={itemVariants}
-                className="flex items-center gap-4 text-gray-600"
-              >
-                <motion.div
-                  variants={iconVariants}
-                  custom={2}
-                  className="w-12 h-12 rounded-xl bg-[#1E88E5]/10 flex items-center justify-center"
-                  whileHover={{ scale: 1.1, rotate: -5 }}
-                >
-                  <FileText className="w-5 h-5 text-[#1E88E5]" />
-                </motion.div>
-                <div>
-                  <div className="text-sm text-gray-500">{currentContent.npwp}</div>
-                  <div className="text-[#1a3a4a]">{contactInfo.npwp}</div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
 
