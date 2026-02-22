@@ -96,33 +96,28 @@ export default function Services({ language }: ServicesProps) {
   const isMobile = useIsMobile();
   const prefersReducedMotion = useReducedMotion();
 
-  // 3D perspective reveal
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 50,
-      rotateY: isMobile || prefersReducedMotion ? 0 : 15,
+    hidden: {
+      opacity: 0,
+      y: 30,
     },
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      rotateY: 0,
       transition: {
-        duration: 0.6,
-        delay: i * 0.15,
+        duration: 0.5,
+        delay: i * 0.1,
         ease: [0.22, 1, 0.36, 1],
       },
     }),
   };
 
   const iconVariants = {
-    hidden: { scale: 0, rotate: -180 },
+    hidden: { scale: 0 },
     visible: {
       scale: 1,
-      rotate: 0,
       transition: {
-        type: "spring",
-        stiffness: 200,
+        duration: 0.3,
         delay: 0.1,
       },
     },
@@ -171,11 +166,7 @@ export default function Services({ language }: ServicesProps) {
           </p>
         </motion.div>
 
-        {/* Services Grid with 3D Effect */}
-        <div 
-          className="grid grid-cols-1 md:grid-cols-2 gap-8"
-          style={{ perspective: 1000 }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {currentServices.map((service, index) => (
             <motion.div
               key={service.title}
@@ -183,21 +174,17 @@ export default function Services({ language }: ServicesProps) {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              whileHover={{ 
-                y: -8, 
-                rotateY: isMobile ? 0 : 5,
-                boxShadow: "0 25px 50px rgba(30, 136, 229, 0.15)",
+              whileHover={{
+                y: -4,
+                boxShadow: "0 8px 30px rgba(30, 136, 229, 0.08)",
               }}
-              transition={{ duration: 0.15 }}
+              transition={{ duration: 0.2 }}
               className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl border border-gray-100 hover:border-[#1E88E5]/30"
-              style={{ transformStyle: "preserve-3d" }}
             >
               <div className="flex items-start gap-5">
-                <motion.div 
+                <motion.div
                   variants={iconVariants}
                   className="flex-shrink-0 w-16 h-16 rounded-2xl bg-gradient-to-br from-[#1E88E5] to-[#1565C0] flex items-center justify-center shadow-lg shadow-[#1E88E5]/30"
-                  whileHover={{ scale: 1.1, rotate: 10 }}
-                  transition={{ type: "spring", stiffness: 500, damping: 20 }}
                 >
                   <service.icon className="w-8 h-8 text-white" />
                 </motion.div>

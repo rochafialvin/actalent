@@ -54,19 +54,16 @@ export default function VisionMission({ language }: VisionMissionProps) {
   const isMobile = useIsMobile();
   const prefersReducedMotion = useReducedMotion();
 
-  // Flip reveal variants
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      rotateY: isMobile || prefersReducedMotion ? 0 : 90,
-      x: isMobile || prefersReducedMotion ? (language === "id" ? -30 : 30) : 0,
+    hidden: {
+      opacity: 0,
+      y: 30,
     },
     visible: (custom: number) => ({
       opacity: 1,
-      rotateY: 0,
-      x: 0,
+      y: 0,
       transition: {
-        duration: 0.7,
+        duration: 0.6,
         delay: custom * 0.2,
         ease: [0.22, 1, 0.36, 1],
       },
@@ -87,53 +84,31 @@ export default function VisionMission({ language }: VisionMissionProps) {
   };
 
   const checkIconVariants = {
-    hidden: { scale: 0, rotate: -180 },
-    visible: (i: number) => ({
+    hidden: { scale: 0 },
+    visible: {
       scale: 1,
-      rotate: 0,
       transition: {
-        delay: 0.7 + i * 0.1,
-        type: "spring",
-        stiffness: 200,
+        duration: 0.3,
+        delay: 0.7,
       },
-    }),
+    },
   };
 
   return (
     <section id="vision-mission" className="py-24 bg-gray-50" ref={ref}>
       <div className="section-padding max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-16">
-          {/* Vision Card - Flip from Left */}
           <motion.div
             custom={0}
             variants={cardVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="relative"
-            style={{ 
-              perspective: 1000,
-              transformStyle: "preserve-3d",
-              backfaceVisibility: "hidden"
-            }}
           >
-            <motion.div 
-              className="absolute -top-4 -left-4 w-24 h-24 bg-[#1E88E5]/10 rounded-full"
-              animate={isInView ? {
-                scale: [1, 1.1, 1],
-                opacity: [0.1, 0.2, 0.1],
-              } : {}}
-              transition={{ duration: 4, repeat: Infinity }}
-            />
-            
-            <div className="relative bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-gray-200/50 hover:shadow-2xl transition-shadow duration-500" style={{ willChange: "transform", backfaceVisibility: "hidden" }}>
+            <div className="relative bg-white rounded-3xl p-8 md:p-10 shadow-xl shadow-gray-200/50 hover:shadow-2xl transition-shadow duration-500">
               <div className="flex items-center gap-4 mb-6">
-                <motion.div 
-                  className="w-14 h-14 rounded-2xl bg-[#1E88E5] flex items-center justify-center"
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
+                <div className="w-14 h-14 rounded-2xl bg-[#1E88E5] flex items-center justify-center">
                   <Target className="w-7 h-7 text-white" />
-                </motion.div>
+                </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-[#1a3a4a]">
                   {currentContent.vision.title}
                 </h3>
@@ -150,37 +125,17 @@ export default function VisionMission({ language }: VisionMissionProps) {
             </div>
           </motion.div>
 
-          {/* Mission Card - Flip from Right */}
           <motion.div
             custom={1}
             variants={cardVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="relative"
-            style={{ 
-              perspective: 1000,
-              transformStyle: "preserve-3d",
-              backfaceVisibility: "hidden"
-            }}
           >
-            <motion.div 
-              className="absolute -top-4 -right-4 w-24 h-24 bg-[#1a3a4a]/10 rounded-full"
-              animate={isInView ? {
-                scale: [1, 1.1, 1],
-                opacity: [0.1, 0.2, 0.1],
-              } : {}}
-              transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-            />
-            
-            <div className="relative bg-[#1a3a4a] rounded-3xl p-8 md:p-10 shadow-xl shadow-[#1a3a4a]/20" style={{ willChange: "transform", backfaceVisibility: "hidden" }}>
+            <div className="relative bg-[#1a3a4a] rounded-3xl p-8 md:p-10 shadow-xl shadow-[#1a3a4a]/20">
               <div className="flex items-center gap-4 mb-6">
-                <motion.div 
-                  className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center"
-                  whileHover={{ scale: 1.1, rotate: -5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
+                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center">
                   <Compass className="w-7 h-7 text-white" />
-                </motion.div>
+                </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white">
                   {currentContent.mission.title}
                 </h3>
@@ -202,7 +157,7 @@ export default function VisionMission({ language }: VisionMissionProps) {
                       initial="hidden"
                       animate={isInView ? "visible" : "hidden"}
                     >
-                      <CheckCircle2 className="w-5 h-5 text-[#1E88E5] flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                      <CheckCircle2 className="w-5 h-5 text-[#1E88E5] flex-shrink-0 mt-0.5" />
                     </motion.div>
                     <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors">{item}</p>
                   </motion.div>

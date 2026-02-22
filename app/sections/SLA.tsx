@@ -94,32 +94,21 @@ export default function SLA({ language }: SLAProps) {
   const isMobile = useIsMobile();
   const prefersReducedMotion = useReducedMotion();
 
-  // Card shuffle - cards fan out like playing cards
-  const getShuffleAnimation = (index: number) => {
-    const rotations = [-5, 3, -3, 5]; // Different rotations for each card
-    const xOffsets = [-20, 10, -10, 20]; // Different x positions
-    
-    return {
-      hidden: { 
-        opacity: 0, 
-        x: isMobile || prefersReducedMotion ? 0 : xOffsets[index],
-        y: isMobile || prefersReducedMotion ? 30 : 60,
-        rotate: isMobile || prefersReducedMotion ? 0 : rotations[index] * 2,
-        scale: 0.8,
+  const cardVariants = {
+    hidden: {
+      opacity: 0,
+      y: 30,
+    },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: i * 0.1,
+        ease: [0.22, 1, 0.36, 1],
       },
-      visible: {
-        opacity: 1,
-        x: 0,
-        y: 0,
-        rotate: 0,
-        scale: 1,
-        transition: {
-          duration: 0.6,
-          delay: index * 0.1,
-          ease: [0.22, 1, 0.36, 1],
-        },
-      },
-    };
+    }),
+  };
   };
 
   // Badge bounce
@@ -138,13 +127,11 @@ export default function SLA({ language }: SLAProps) {
   };
 
   const iconVariants = {
-    hidden: { scale: 0, rotate: -90 },
+    hidden: { scale: 0 },
     visible: {
       scale: 1,
-      rotate: 0,
       transition: {
-        type: "spring",
-        stiffness: 200,
+        duration: 0.3,
         delay: 0.2,
       },
     },
@@ -182,13 +169,13 @@ export default function SLA({ language }: SLAProps) {
           {currentGuarantees.map((guarantee, index) => (
             <motion.div
               key={guarantee.title}
-              variants={getShuffleAnimation(index)}
+              custom={index}
+              variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
               whileHover={{
-                y: -10,
-                rotate: isMobile ? 0 : 2,
-                boxShadow: "0 20px 40px rgba(30, 136, 229, 0.15)",
+                y: -4,
+                boxShadow: "0 8px 30px rgba(30, 136, 229, 0.08)",
                 transition: { duration: 0.2 }
               }}
               className="group bg-white rounded-2xl p-6 hover:bg-gradient-to-br hover:from-white hover:to-blue-50 transition-all duration-300"
@@ -196,7 +183,6 @@ export default function SLA({ language }: SLAProps) {
               <motion.div
                 variants={iconVariants}
                 className="w-14 h-14 rounded-2xl bg-[#1E88E5]/10 flex items-center justify-center mb-5 group-hover:bg-[#1E88E5] transition-colors duration-300"
-                whileHover={{ scale: 1.1, rotate: 5 }}
               >
                 <guarantee.icon className="w-7 h-7 text-[#1E88E5] group-hover:text-white transition-colors duration-300" />
               </motion.div>

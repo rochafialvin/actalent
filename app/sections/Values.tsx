@@ -90,14 +90,11 @@ export default function Values({ language }: ValuesProps) {
   };
 
   const letterBadgeVariants = {
-    hidden: { scale: 0, rotate: -180 },
+    hidden: { scale: 0 },
     visible: {
       scale: 1,
-      rotate: 0,
       transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 15,
+        duration: 0.3,
         delay: 0.3,
       },
     },
@@ -154,33 +151,26 @@ export default function Values({ language }: ValuesProps) {
               key={value.letter}
               variants={cardVariants}
               custom={getDiagonalDelay(index)}
-              whileHover={{ 
-                y: -8, 
-                boxShadow: "0 20px 40px rgba(30, 136, 229, 0.15)",
-                transition: { duration: 0.3 } 
+              whileHover={{
+                y: -4,
+                boxShadow: "0 8px 30px rgba(30, 136, 229, 0.08)",
+                transition: { duration: 0.2 }
               }}
               className="group relative"
             >
-              <div className="relative p-6 rounded-2xl bg-gray-50 hover:bg-[#1a3a4a] transition-all duration-500 h-full">
-                {/* Letter Badge with Pop Animation */}
-                <motion.div 
+              <div className="relative p-6 rounded-2xl bg-gray-50 hover:bg-[#1a3a4a] transition-all duration-300 h-full">
+                <motion.div
                   variants={letterBadgeVariants}
                   className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-[#1E88E5] flex items-center justify-center text-white font-bold text-lg shadow-lg"
                 >
                   {value.letter}
                 </motion.div>
 
-                {/* Icon with Scale Animation */}
-                <motion.div 
+                <motion.div
                   variants={iconVariants}
                   className="w-12 h-12 rounded-xl bg-[#1E88E5]/10 group-hover:bg-white/10 flex items-center justify-center mb-4 transition-colors duration-300"
                 >
-                  <motion.div
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <value.icon className="w-6 h-6 text-[#1E88E5] group-hover:text-white transition-colors duration-300" />
-                  </motion.div>
+                  <value.icon className="w-6 h-6 text-[#1E88E5] group-hover:text-white transition-colors duration-300" />
                 </motion.div>
 
                 {/* Content */}
