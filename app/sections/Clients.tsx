@@ -111,24 +111,39 @@ export default function Clients({ language }: ClientsProps) {
             width: 'fit-content'
           }}
         >
-          {duplicatedClients.map((client, index) => (
-            <motion.div
-              key={`${client.name}-${index}`}
-              custom={index}
-              variants={isMobile || prefersReducedMotion ? undefined : logoVariants}
-              initial={isMobile || prefersReducedMotion ? false : "hidden"}
-              animate={isInView ? "visible" : "hidden"}
-              whileHover={{ scale: 1.1 }}
-              className="flex-shrink-0 mx-8 w-40 h-24 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-pointer"
-            >
-              <Image
-                src={client.image}
-                alt={client.name}
-                fill
-                className="object-contain"
-              />
-            </motion.div>
-          ))}
+          {duplicatedClients.map((client, index) => {
+            const logoClass = "flex-shrink-0 mx-8 w-40 h-24 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-pointer";
+            if (isMobile || prefersReducedMotion) {
+              return (
+                <div key={`${client.name}-${index}`} className={logoClass}>
+                  <Image
+                    src={client.image}
+                    alt={client.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              );
+            }
+            return (
+              <motion.div
+                key={`${client.name}-${index}`}
+                custom={index}
+                variants={logoVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                whileHover={{ scale: 1.1 }}
+                className={logoClass}
+              >
+                <Image
+                  src={client.image}
+                  alt={client.name}
+                  fill
+                  className="object-contain"
+                />
+              </motion.div>
+            );
+          })}
         </div>
       </motion.div>
     </section>
