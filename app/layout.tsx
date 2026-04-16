@@ -10,6 +10,9 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://actalent.id"),
+  icons: {
+    icon: "/favicon.ico",
+  },
   title: {
     default: "ACTALENT Solutions Partners | Strategic Recruitment Partner",
     template: "%s | ACTALENT Solutions Partners",
