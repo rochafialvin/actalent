@@ -115,8 +115,8 @@ export default function Clients({ language }: ClientsProps) {
             <motion.div
               key={`${client.name}-${index}`}
               custom={index}
-              variants={isMobile || prefersReducedMotion ? {} : logoVariants}
-              initial="hidden"
+              variants={isMobile || prefersReducedMotion ? undefined : logoVariants}
+              initial={isMobile || prefersReducedMotion ? false : "hidden"}
               animate={isInView ? "visible" : "hidden"}
               whileHover={{ scale: 1.1 }}
               className="flex-shrink-0 mx-8 w-40 h-24 relative grayscale hover:grayscale-0 transition-all duration-300 opacity-60 hover:opacity-100 cursor-pointer"
