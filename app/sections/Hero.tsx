@@ -174,9 +174,9 @@ export default function Hero({ language }: HeroProps) {
       )}
 
       {/* Content */}
-      <motion.div 
+      <motion.div
         className="relative z-10 section-padding w-full max-w-7xl mx-auto pt-32 pb-20"
-        style={{ y: prefersReducedMotion || isMobile ? 0 : contentY, opacity: prefersReducedMotion ? 1 : opacity }}
+        style={{ y: prefersReducedMotion || isMobile ? 0 : contentY, opacity: prefersReducedMotion || isMobile ? 1 : opacity }}
       >
         <div className="text-center max-w-4xl mx-auto">
           {/* Headline with Staggered Reveal */}
