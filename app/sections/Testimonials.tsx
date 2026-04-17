@@ -36,9 +36,9 @@ const testimonials = [
   },
 ];
 
-const firstColumn = testimonials.slice(0, 2);
-const secondColumn = testimonials.slice(2, 4);
-const thirdColumn = [testimonials[4], testimonials[0]];
+const firstColumn = [testimonials[0], testimonials[1], testimonials[2], testimonials[3], testimonials[4]];
+const secondColumn = [testimonials[2], testimonials[4], testimonials[1], testimonials[3], testimonials[0]];
+const thirdColumn = [testimonials[4], testimonials[0], testimonials[3], testimonials[1], testimonials[2]];
 
 interface TestimonialsProps {
   language: "id" | "en";
@@ -83,10 +83,10 @@ const Testimonials = ({ language }: TestimonialsProps) => {
           </p>
         </motion.div>
 
-        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
-          <TestimonialsColumn testimonials={firstColumn} duration={15} />
-          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
-          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
+        <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-10 md:[mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] md:max-h-[740px] md:overflow-hidden">
+          <TestimonialsColumn testimonials={firstColumn} duration={75} />
+          <TestimonialsColumn testimonials={secondColumn} duration={95} />
+          <TestimonialsColumn testimonials={thirdColumn} duration={85} />
         </div>
       </div>
     </section>
