@@ -83,10 +83,10 @@ const Testimonials = ({ language }: TestimonialsProps) => {
           </p>
         </motion.div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6 mt-10 md:[mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] md:max-h-[740px] md:overflow-hidden">
+        <div className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[740px] overflow-hidden">
           <TestimonialsColumn testimonials={firstColumn} duration={75} />
-          <TestimonialsColumn testimonials={secondColumn} duration={95} />
-          <TestimonialsColumn testimonials={thirdColumn} duration={85} />
+          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={95} />
+          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={85} />
         </div>
       </div>
     </section>
